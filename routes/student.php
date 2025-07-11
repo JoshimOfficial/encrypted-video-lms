@@ -9,5 +9,5 @@ Route::prefix('/student')->middleware('auth')->group(function(){
     // });
     Route::get('dashboard', function () {
         return Inertia::render('student/dashboard');
-    })->name('teacher-dashboard');
+    })->name('student-dashboard');
 });
