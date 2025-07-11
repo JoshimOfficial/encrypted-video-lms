@@ -1,4 +1,4 @@
-import AppLayoutTemplate from '@/layouts/app/system/app-sidebar-layout';
+import AppLayoutTemplate from '@/layouts/app/teacher/app-sidebar-layout';
 import { type BreadcrumbItem } from '@/types';
 import { type ReactNode } from 'react';
 
