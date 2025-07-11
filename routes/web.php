@@ -1,6 +1,7 @@
 <?php
-
+// D:\Laravel\encypted-video-lms\app\Http\Controllers\LoginController.php
 use App\Models\User;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -17,13 +18,21 @@ Route::get('dashboard', function () {
 return Auth::user();
 });
 
+Route::get('login/{userType}', [LoginController::class, 'redirectToGoogle'])->name('loginRequestWithType');
+
+
+
+
 Route::get('auth/google', function () {
     return Socialite::driver('google')->redirect();
-});
+})->name('google.login');
+
+
 
 Route::get('auth/google/callback', function () {
     $googleUser = Socialite::driver('google')->stateless()->user();
-
+    // Set default user type for Google OAuth users
+    $userType = session('userType'); // You can change this default or make it configurable
 
     $user = User::updateOrCreate(
         ['email' => $googleUser->getEmail()],
@@ -33,10 +42,17 @@ Route::get('auth/google/callback', function () {
             'user_type' => $userType,
         ]
     );
+    Session::forget('userType');
 
     Auth::login($user);
 
-    return redirect('/dashboard');
+    // return $user->user_type;
+
+    if($user->user_type == 'teacher') {
+        return redirect()->route('teacher-dashboard');
+    }else{
+        return redirect()->route('student-dashboard');
+    }
 });
 
 
