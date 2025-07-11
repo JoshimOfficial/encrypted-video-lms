@@ -16,5 +16,5 @@ Route::prefix('/system')->middleware('auth')->group(function(){
     // });
     Route::get('dashboard', function () {
         return Inertia::render('system/dashboard');
-    })->name('dashboard');
+    })->name('system-dashboard');
 });

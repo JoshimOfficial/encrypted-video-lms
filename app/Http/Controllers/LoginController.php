@@ -12,6 +12,8 @@ class LoginController extends Controller
     public function redirectToGoogle(Request $request)
     {
         $userType = $request->userType;
+        // return $userType;
+
         if($userType == 'teacher') {
             Session::put('userType', 'teacher');
         } elseif($userType == 'admin') {
@@ -19,7 +21,9 @@ class LoginController extends Controller
         } else {
             Session::put('userType', 'student');
         }
-        return Socialite::driver('google')->redirect();
+
+        // return Socialite::driver('google')->redirect();
+        return redirect()->route('google.login');
     }
 
 
