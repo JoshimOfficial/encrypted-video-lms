@@ -5,7 +5,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
-import AppLogo from './app-logo';
+import AppLogo from '../app-logo';
 
 const mainNavItems: NavItem[] = [
     {
@@ -14,22 +14,40 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Courses',
-        href: '/courses',
-        icon: Folder,
-        children: [
-            {
-                title: 'All Courses',
-                href: '/courses/all',
-                icon: Folder,
-            },
-            {
-                title: 'My Courses',
-                href: '/courses/mine',
-                icon: Folder,
-            },
-        ],
+        title: 'Course',
+        href: '/dashboard',
+        icon: LayoutGrid,
     },
+    {
+        title: 'Video',
+        href: '/dashboard',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Student',
+        href: '/dashboard',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Batch',
+        href: '/dashboard',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Teacher',
+        href: '/dashboard',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Permission',
+        href: '/dashboard',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Services Setup',
+        href: '/dashboard',
+        icon: LayoutGrid,
+    }
 ];
 
 const footerNavItems: NavItem[] = [
