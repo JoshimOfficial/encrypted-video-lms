@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="w-full bg-cover bg-center bg-no-repeat relative" style="background-image: url('/hero-bg.png');">
+    <div class="w-full bg-cover bg-center bg-no-repeat relative" style="background-image: url('/images/hero-bg.png');">
         <!-- Hero Section -->
         <section class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto h-[95vh] flex items-center">
             <div class="flex flex-col lg:flex-row items-center gap-10 justify-between w-full">
@@ -20,7 +20,7 @@
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition duration-300 shadow-lg">
+                        <button class="px-8 py-4 bg-rose-root hover:bg-indigo-700 text-white font-medium rounded-lg transition duration-300 shadow-lg">
                             Get started
                         </button>
                         <button class="px-8 py-4 bg-transparent border-2 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-800">
