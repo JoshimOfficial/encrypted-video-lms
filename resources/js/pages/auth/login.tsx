@@ -2,7 +2,7 @@ import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
 
-
+import { Link } from '@inertiajs/react';
 import AuthLayout from '@/layouts/auth-layout';
 import { Button } from "@/components/ui/button"
 
@@ -30,28 +30,22 @@ export default function Login({ status, canResetPassword }: LoginProps) {
             onFinish: () => reset('password'),
         });
     };
-    
-    const handleStudent = () => {
-        
-    }
-
-    const handleTeacher = () => {
-
-    }
     return (
         <AuthLayout title="Continue with your account" description="Enter your email and password below to log in">
             <div>
                 <Head title="Log in" />
                 <Button className='py-6 cursor-pointer w-full font-bold'>
-                    <img src="/icons/google_white.png" alt="google" className='w-5 h-5' />
-                    
-                    <span>Continue as a Student</span>
+                    <Link href={route('login')} className='flex gap-2'>
+                        <img src="/icons/google_white.png" alt="google" className='w-5 h-5' />
+                        <span>Continue as a Student</span>
+                    </Link>
                 </Button>
                 <p className='py-2 text-center'>or</p>
                 <Button className='py-6 cursor-pointer w-full font-bold'>
-                    <img src="/icons/google_white.png" alt="google" className='w-5 h-5' />
-                    
-                    <span>Continue as a Teacher</span>
+                    <Link href={route('login')} className='flex gap-2'>
+                        <img src="/icons/google_white.png" alt="google" className='w-5 h-5' />
+                        <span>Continue as a Teacher</span>
+                    </Link>
                 </Button>
 
             </div>
