@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::prefix('/student')->middleware('auth')->group(function(){
+Route::prefix('/student')->middleware('auth.student')->group(function(){
     // Route::get('dashboard',function() {
     //     return "This is student dashboard.";
     // });
