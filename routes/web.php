@@ -1,6 +1,9 @@
 <?php
 // D:\Laravel\encypted-video-lms\app\Http\Controllers\LoginController.php
 use App\Models\User;
+use App\Models\Teacher;
+use App\Models\Student;
+use App\Models\Admin;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +17,12 @@ use Laravel\Socialite\Facades\Socialite;
 //     })->name('dashboard');
 // });
 
+Route::get('/', function () {
+    return Inertia::render('Welcome');
+})->name('home');
+
 Route::get('dashboard', function () {
-return Auth::user();
+    return Auth::user();
 });
 
 Route::get('login/{userType}', [LoginController::class, 'redirectToGoogle'])->name('loginRequestWithType');
@@ -31,26 +38,41 @@ Route::get('auth/google', function () {
 
 Route::get('auth/google/callback', function () {
     $googleUser = Socialite::driver('google')->stateless()->user();
-    // Set default user type for Google OAuth users
-    $userType = session('userType'); // You can change this default or make it configurable
+    $userType = session('userType');
+    // return $userType;
 
-    $user = User::updateOrCreate(
-        ['email' => $googleUser->getEmail()],
-        [
-            'name' => $googleUser->getName(),
-            'google_id' => $googleUser->getId(),
-            'user_type' => $userType,
-        ]
-    );
-    Session::forget('userType');
+    if ($userType == 'teacher') {
+        // return "Teacher detected!";
+        // Handle teacher authentication
+        $teacher = Teacher::updateOrCreate(
+            ['email' => $googleUser->getEmail()],
+            [
+                'name' => $googleUser->getName(),
+                'google_id' => $googleUser->getId(),
+                'user_type' => 'teacher',
+            ]
+        );
 
-    Auth::login($user);
+        Session::forget('userType');
+        Auth::guard('teacher')->login($teacher);
 
-    // return $user->user_type;
-
-    if($user->user_type == 'teacher') {
         return redirect()->route('teacher-dashboard');
-    }else{
+    } else {
+        // return "Student detected!";
+
+        // Handle student authentication (default)
+        $student = Student::updateOrCreate(
+            ['email' => $googleUser->getEmail()],
+            [
+                'name' => $googleUser->getName(),
+                'google_id' => $googleUser->getId(),
+                'user_type' => 'student',
+            ]
+        );
+
+        Session::forget('userType');
+        Auth::guard('student')->login($student);
+
         return redirect()->route('student-dashboard');
     }
 });
@@ -59,6 +81,9 @@ Route::get('auth/google/callback', function () {
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 require __DIR__.'/static_web.php';
+require __DIR__.'/system_admin.php';
+require __DIR__.'/teacher_auth.php';
+require __DIR__.'/student_auth.php';
 require __DIR__.'/system.php';
 require __DIR__.'/student.php';
 require __DIR__.'/teacher.php';

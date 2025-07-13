@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { InputError } from '@/components/input-error';
 
-export default function SystemLogin() {
+export default function StudentLogin() {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
         password: '',
@@ -14,20 +14,20 @@ export default function SystemLogin() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        post(route('system.login.store'));
+        post(route('student.login.store'));
     }
 
     return (
         <>
-            <Head title="System Admin Login" />
+            <Head title="Student Login" />
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
                 <Card className="w-full max-w-md">
                     <CardHeader className="space-y-1">
                         <CardTitle className="text-2xl font-bold text-center">
-                            System Admin Login
+                            Student Login
                         </CardTitle>
                         <CardDescription className="text-center">
-                            Enter your credentials to access the system admin panel
+                            Enter your credentials to access the student panel
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

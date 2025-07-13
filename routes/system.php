@@ -10,7 +10,7 @@ use Inertia\Inertia;
 // });
 
 
-Route::prefix('/system')->middleware('auth')->group(function(){
+Route::prefix('/system')->middleware('auth.system_admin')->group(function(){
     // Route::get('dashboard',function() {
     //     return "This is system dashboard.";
     // });
