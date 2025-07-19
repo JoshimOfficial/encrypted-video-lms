@@ -19,11 +19,68 @@
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2023 Ram Design. All rights reserved.</p>
-            <p class="mt-2 text-gray-400">Modern UI components built with Tailwind CSS</p>
+    <!-- Footer Section -->
+    <footer class="bg-[#0b1120cc] pt-32 pb-8 px-4 sm:px-6 lg:px-8 spcae-y-5">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl font-bold text-rose-root">AASHA</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Aasha ishes nisi velutpateten, illo inne nostar veri eksi egalai architeccio vitae dicta suos epistallo neemo enne laugust alti, undo ennno itse natura.
+                    </p>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-dark-800 p-3 w-10 h-10 rounded-full text-white flex justify-center align-middle bg-rose-root transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-dark-800 p-3 rounded-full text-white flex justify-center align-middle bg-rose-root transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-dark-800 p-3 rounded-full text-white text-white flex justify-center align-middle bg-rose-root transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-dark-800 p-3 rounded-full text-white flex justify-center align-middle bg-rose-root transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- About Us -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-200">ABOUT US</h3>
+                    <p class="text-gray-400 mb-4 max-w-xs">
+                        Aasha ishes nisi velutpateten, illo inne nostar veri alti, etsi egalai architeccio vitae dicta suos
+                    </p>
+                    <a href="#" class="text-rose-root hover:text-indigo-300 font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-200">NAVIGATION</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">HOME</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">PORTFOLIO</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">SERVICES</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">TEAM MEMBER</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">CLIENT</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="footer-divider my-8"></div>
+            
+            <!-- Copyright -->
+            <div class="text-center text-gray-500 text-sm">
+                <p>&copy; 2023 AASHA. All rights reserved. Designed with <i class="fas fa-heart text-rose-root"></i> for creative minds.</p>
+            </div>
         </div>
     </footer>
 

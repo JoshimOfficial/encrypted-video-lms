@@ -30,7 +30,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: #4F46E5;
+            background-color: oklch(0.645 0.246 16.439);
             transition: width 0.3s ease;
         }
 
@@ -111,35 +111,35 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex lg:items-center lg:space-x-4">
                     <div class="flex space-x-2">
-                        <a href="#" class="nav-link bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-slate-800">Home</a>
+                        <a href="/" class="nav-link bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-slate-800">Home</a>
                         
                         <!-- Dropdown 1 -->
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/about" class="flex items-center space-x-1">
                                     <span>About</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/services" class="flex items-center space-x-1">
                                     <span>Service</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/price" class="flex items-center space-x-1">
                                     <span>Price</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/contact" class="flex items-center space-x-1">
                                     <span>Contact</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
