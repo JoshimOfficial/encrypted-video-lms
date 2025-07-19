@@ -17,6 +17,79 @@
             }
         }
     </script>
+    <style>
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: oklch(0.645 0.246 16.439);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 1000px;
+        }
+
+        .dropdown-content {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            transform: translateX(5px);
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 24px;
+            background-color: #334155;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:first-child {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+    </style>
 </head>
 <body class="bg-gray-50 dark:bg-slate-900">
     <!-- Navbar -->
@@ -38,35 +111,35 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex lg:items-center lg:space-x-4">
                     <div class="flex space-x-2">
-                        <a href="#" class="nav-link bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-slate-800">Home</a>
+                        <a href="/" class="nav-link bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-slate-800">Home</a>
                         
                         <!-- Dropdown 1 -->
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/about" class="flex items-center space-x-1">
                                     <span>About</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/services" class="flex items-center space-x-1">
                                     <span>Service</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/price" class="flex items-center space-x-1">
                                     <span>Price</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
-                                <div class="flex items-center space-x-1">
+                                <a href="/contact" class="flex items-center space-x-1">
                                     <span>Contact</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

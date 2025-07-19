@@ -20,8 +20,8 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-dark-900 pt-32 pb-12 px-4 sm:px-6 lg:px-8 spcae-y-5 max-w-7xl mx-auto">
-        <div class="max-w-7xl mx-auto">
+    <footer class="bg-[#0b1120cc] pt-32 pb-8 px-4 sm:px-6 lg:px-8 spcae-y-5">
+        <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
                 <!-- Company Info -->
                 <div class="md:col-span-2">
