@@ -107,12 +107,12 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex lg:items-center lg:space-x-4">
                     <div class="flex space-x-2">
                         <a href="/" class="nav-link bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-slate-800">Home</a>
-                        
+
                         <!-- Dropdown 1 -->
                         <div class="dropdown relative cursor-pointer">
                             <div class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-800 hover:text-white dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
@@ -143,15 +143,37 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Desktop Buttons -->
-                    <div class="flex items-center space-x-4">
-                        <a href="/login" class="text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-800 bg-rose-root dark:hover:bg-sky-700">
-                            Login/Signup
-                        </a>
-                    </div>
+
+
+
+                @if(!$isAuthenticated)
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-800 bg-rose-root dark:hover:bg-sky-700">
+                        Login/Signup
+                    </a>
                 </div>
-                
+                @else
+                <div class="flex items-center space-x-4">
+                    @if($isStudent)
+                        <a href="/student/dashboard" class="text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-800 bg-rose-root dark:hover:bg-sky-700">
+                            Student Dashboard
+                        </a>
+                    @elseif($isTeacher)
+                        <a href="/teacher/dashboard" class="text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-800 bg-rose-root dark:hover:bg-sky-700">
+                            Teacher Dashboard
+                        </a>
+                    @elseif($isAdmin)
+                        <a href="/system/dashboard" class="text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-800 bg-rose-root dark:hover:bg-sky-700">
+                            Admin Dashboard
+                        </a>
+                    @endif
+                </div>
+                @endif
+
+                </div>
+
                 <!-- Mobile menu button -->
                 <div class="flex lg:hidden items-center space-x-3">
                     <button id="menuBtn" class="hamburger p-2">
@@ -162,12 +184,12 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="mobile-menu lg:hidden bg-white dark:bg-[#0B1120]/80 ">
             <div class="px-2 pb-3 pt-2 space-y-1">
                 <a href="#" class="block w-full rounded-md px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-700">Home</a>
-                
+
                 <!-- Mobile Dropdown 1 -->
                 <div class="mt-1">
                     <button class="mobile-dropdown-btn w-full rounded-md px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 text-left">
@@ -197,12 +219,28 @@
                         </div>
                     </button>
                 </div>
-                
-                <!-- Mobile Login Button -->
+
+                                <!-- Mobile Login/Dashboard Button -->
                 <div class="pt-3 px-2">
-                    <a href="/login" class="block w-full text-center bg-slate-900 text-white px-4 py-2 rounded-full text-base font-medium hover:bg-slate-800 dark:bg-sky-600 dark:hover:bg-sky-700">
-                        Login/Signup
-                    </a>
+                    @if(!$isAuthenticated)
+                        <a href="/login" class="block w-full text-center bg-slate-900 text-white px-4 py-2 rounded-full text-base font-medium hover:bg-slate-800 dark:bg-sky-600 dark:hover:bg-sky-700">
+                            Login/Signup
+                        </a>
+                    @else
+                        @if($isStudent)
+                            <a href="/student/dashboard" class="block w-full text-center bg-slate-900 text-white px-4 py-2 rounded-full text-base font-medium hover:bg-slate-800 dark:bg-sky-600 dark:hover:bg-sky-700">
+                                Student Dashboard
+                            </a>
+                        @elseif($isTeacher)
+                            <a href="/teacher/dashboard" class="block w-full text-center bg-slate-900 text-white px-4 py-2 rounded-full text-base font-medium hover:bg-slate-800 dark:bg-sky-600 dark:hover:bg-sky-700">
+                                Teacher Dashboard
+                            </a>
+                        @elseif($isAdmin)
+                            <a href="/system/dashboard" class="block w-full text-center bg-slate-900 text-white px-4 py-2 rounded-full text-base font-medium hover:bg-slate-800 dark:bg-sky-600 dark:hover:bg-sky-700">
+                                Admin Dashboard
+                            </a>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
@@ -211,26 +249,26 @@
         // Mobile menu toggle
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('active');
             mobileMenu.classList.toggle('open');
         });
-        
+
         // Mobile dropdown toggle
         const mobileDropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
-        
+
         mobileDropdownBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const icon = btn.querySelector('i');
-                
+
                 content.classList.toggle('hidden');
                 icon.classList.toggle('fa-chevron-down');
                 icon.classList.toggle('fa-chevron-up');
             });
         });
-        
+
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target) && mobileMenu.classList.contains('open')) {
