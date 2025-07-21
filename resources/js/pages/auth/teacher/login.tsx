@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { InputError } from '@/components/input-error';
+import InputError from '@/components/input-error';
 
 export default function TeacherLogin() {
     const { data, setData, post, processing, errors } = useForm({
@@ -70,7 +70,7 @@ export default function TeacherLogin() {
                                 </div>
                             </div>
 
-                            <Button type="submit" className="w-full" disabled={processing}>
+                            <Button type="submit" className="w-full" disabled={!!processing}>
                                 {processing ? 'Signing in...' : 'Sign in'}
                             </Button>
                         </form>
