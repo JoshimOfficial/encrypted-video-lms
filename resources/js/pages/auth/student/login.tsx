@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { InputError } from '@/components/input-error';
+import InputError from '@/components/input-error';
 
 export default function StudentLogin() {
     const { data, setData, post, processing, errors } = useForm({
@@ -62,7 +62,7 @@ export default function StudentLogin() {
                                     <input
                                         id="remember"
                                         type="checkbox"
-                                        checked={data.remember}
+                                        checked={!!data.remember}
                                         onChange={(e) => setData('remember', e.target.checked)}
                                         className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     />
@@ -70,7 +70,7 @@ export default function StudentLogin() {
                                 </div>
                             </div>
 
-                            <Button type="submit" className="w-full" disabled={processing}>
+                            <Button type="submit" className="w-full" disabled={!!processing}>
                                 {processing ? 'Signing in...' : 'Sign in'}
                             </Button>
                         </form>

@@ -1,10 +1,12 @@
 import { Head, Link } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import TeacherLayout from '@/layouts/teacher-layout';
 
 export default function TeacherDashboard() {
     return (
         <>
+        <TeacherLayout>
             <Head title="Teacher Dashboard" />
             <div className="min-h-screen bg-gray-50">
                 <div className="container mx-auto px-4 py-8">
@@ -83,6 +85,7 @@ export default function TeacherDashboard() {
                     </div>
                 </div>
             </div>
+        </TeacherLayout>
         </>
     );
 }
