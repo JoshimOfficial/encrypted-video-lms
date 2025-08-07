@@ -1,0 +1,64 @@
+{
+    "roles": [
+      {
+        "id": "role-admin",
+        "name": "Administrator",
+        "createdAt": "2023-06-15T08:30:00Z",
+        "isActive": true,
+        "permissions": [
+          { "id": "student-management", "name": "Student Management", "checked": true },
+          { "id": "course-management", "name": "Course Management", "checked": true },
+          { "id": "batch-management", "name": "Batch Management", "checked": true },
+          { "id": "video-management", "name": "Video Management", "checked": true },
+          { "id": "teacher-management", "name": "Teacher Management", "checked": true },
+          { "id": "service-management", "name": "Service Management", "checked": true },
+          { "id": "package-management", "name": "Package Management", "checked": true }
+        ]
+      },
+      {
+        "id": "role-teacher",
+        "name": "Teacher",
+        "createdAt": "2023-08-01T14:20:00Z",
+        "isActive": true,
+        "permissions": [
+          { "id": "student-management", "name": "Student Management", "checked": true },
+          { "id": "course-management", "name": "Course Management", "checked": true },
+          { "id": "batch-management", "name": "Batch Management", "checked": true },
+          { "id": "video-management", "name": "Video Management", "checked": true },
+          { "id": "teacher-management", "name": "Teacher Management", "checked": false },
+          { "id": "service-management", "name": "Service Management", "checked": false },
+          { "id": "package-management", "name": "Package Management", "checked": false }
+        ]
+      },
+      {
+        "id": "role-content",
+        "name": "Content Manager",
+        "createdAt": "2023-09-22T10:15:00Z",
+        "isActive": true,
+        "permissions": [
+          { "id": "student-management", "name": "Student Management", "checked": false },
+          { "id": "course-management", "name": "Course Management", "checked": true },
+          { "id": "batch-management", "name": "Batch Management", "checked": false },
+          { "id": "video-management", "name": "Video Management", "checked": true },
+          { "id": "teacher-management", "name": "Teacher Management", "checked": false },
+          { "id": "service-management", "name": "Service Management", "checked": false },
+          { "id": "package-management", "name": "Package Management", "checked": false }
+        ]
+      },
+      {
+        "id": "role-support",
+        "name": "Support Staff",
+        "createdAt": "2023-11-05T16:40:00Z",
+        "isActive": false,
+        "permissions": [
+          { "id": "student-management", "name": "Student Management", "checked": true },
+          { "id": "course-management", "name": "Course Management", "checked": false },
+          { "id": "batch-management", "name": "Batch Management", "checked": false },
+          { "id": "video-management", "name": "Video Management", "checked": false },
+          { "id": "teacher-management", "name": "Teacher Management", "checked": false },
+          { "id": "service-management", "name": "Service Management", "checked": true },
+          { "id": "package-management", "name": "Package Management", "checked": true }
+        ]
+      }
+    ]
+  }

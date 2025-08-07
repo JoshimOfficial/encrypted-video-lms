@@ -6,6 +6,7 @@ import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
 import AppLogo from '../app-logo';
+import { Button } from '../ui/button';
 
 const mainNavItems: NavItem[] = [
     {
@@ -20,7 +21,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Video',
-        href: '/dashboard',
+        href: '/teacher/video',
         icon: LayoutGrid,
     },
     {
@@ -34,13 +35,13 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Teacher',
-        href: '/dashboard',
+        title: 'Instructor',
+        href: '/teacher/instructor',
         icon: LayoutGrid,
     },
     {
-        title: 'Permission',
-        href: '/dashboard',
+        title: 'Role',
+        href: '/teacher/role',
         icon: LayoutGrid,
     },
     {
@@ -85,6 +86,14 @@ export function AppSidebar() {
             <SidebarFooter>
                 <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
+                <div className="flex space-x-4">
+                            <Link href={route('home')}>
+                                <Button variant="outline">Back to Home</Button>
+                            </Link>
+                            <form method="POST" action={route('teacher.logout')} className="inline">
+                                <Button type="submit" variant="destructive">Logout</Button>
+                            </form>
+                        </div>
             </SidebarFooter>
         </Sidebar>
     );

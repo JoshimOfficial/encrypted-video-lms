@@ -39,6 +39,10 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+        {{-- React CDN (only if using external React) --}}
+        {{-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script> --}}
+        {{-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script> --}}
+
         @routes
         @viteReactRefresh
         @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
