@@ -15,10 +15,20 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Course',
-        href: '/dashboard',
+        title: 'Batch',
+        href: '/teacher/batch',
         icon: LayoutGrid,
     },
+    {
+        title: 'Module',
+        href: '/teacher/module',
+        icon: LayoutGrid,
+    },
+    // {
+    //     title: 'Course',
+    //     href: '/dashboard',
+    //     icon: LayoutGrid,
+    // },
     {
         title: 'Video',
         href: '/teacher/video',
@@ -35,33 +45,29 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Instructor',
-        href: '/teacher/instructor',
+        title: 'Class Test',
+        href: '/teacher/class-test',
         icon: LayoutGrid,
     },
-    {
-        title: 'Role',
-        href: '/teacher/role',
-        icon: LayoutGrid,
-    },
+    // {
+    //     title: 'Instructor',
+    //     href: '/teacher/instructor',
+    //     icon: LayoutGrid,
+    // },
+    // {
+    //     title: 'Role',
+    //     href: '/teacher/role',
+    //     icon: LayoutGrid,
+    // },
+
+];
+
+const footerNavItems: NavItem[] = [
     {
         title: 'Services Setup',
         href: '/dashboard',
         icon: LayoutGrid,
     }
-];
-
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
-    },
 ];
 
 export function AppSidebar() {
