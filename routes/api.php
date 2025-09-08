@@ -22,6 +22,7 @@ Route::prefix('v1')->group(function () {
         Route::get('google/callback', [AuthController::class, 'googleCallback']);
     });
 
+    
     //_____ Public Profile Route _____//
     Route::get('profile', function (Request $request) {
         if (auth('teacher')->check()) {
