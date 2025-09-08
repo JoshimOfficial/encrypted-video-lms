@@ -1,5 +1,4 @@
 <?php
-// D:\Laravel\encypted-video-lms\app\Http\Controllers\LoginController.php
 use App\Models\User;
 use App\Models\Teacher;
 use App\Models\Student;
@@ -25,58 +24,16 @@ Route::get('dashboard', function () {
     return Auth::user();
 });
 
-Route::get('login/{userType}', [LoginController::class, 'redirectToGoogle'])->name('loginRequestWithType');
-
-
-
-
-Route::get('auth/google', function () {
-    return Socialite::driver('google')->redirect();
-})->name('google.login');
-
-
-
-Route::get('auth/google/callback', function () {
-    $googleUser = Socialite::driver('google')->stateless()->user();
-    $userType = session('userType');
-    // return $userType;
-
-    if ($userType == 'teacher') {
-        // return "Teacher detected!";
-        // Handle teacher authentication
-        $teacher = Teacher::updateOrCreate(
-            ['email' => $googleUser->getEmail()],
-            [
-                'name' => $googleUser->getName(),
-                'google_id' => $googleUser->getId(),
-                'user_type' => 'teacher',
-            ]
-        );
-
-        Session::forget('userType');
-        Auth::guard('teacher')->login($teacher);
-
-        return redirect()->route('teacher-dashboard');
+// New route for accessing user profile without bearer token
+Route::get('profile', function () {
+    if (Auth::guard('teacher')->check()) {
+        return response()->json(new \App\Http\Resources\UserResource(Auth::guard('teacher')->user()));
+    } elseif (Auth::guard('student')->check()) {
+        return response()->json(new \App\Http\Resources\UserResource(Auth::guard('student')->user()));
     } else {
-        // return "Student detected!";
-
-        // Handle student authentication (default)
-        $student = Student::updateOrCreate(
-            ['email' => $googleUser->getEmail()],
-            [
-                'name' => $googleUser->getName(),
-                'google_id' => $googleUser->getId(),
-                'user_type' => 'student',
-            ]
-        );
-
-        Session::forget('userType');
-        Auth::guard('student')->login($student);
-
-        return redirect()->route('student-dashboard');
+        return response()->json(['message' => 'Unauthenticated.'], 401);
     }
-});
-
+})->name('web.profile');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
