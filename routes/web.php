@@ -24,8 +24,9 @@ Route::get('dashboard', function () {
     return Auth::user();
 });
 
-// New route for accessing user profile without bearer token
-Route::get('profile', function () {
+// Session-authenticated profile endpoint matching API path (no Bearer needed on web)
+Route::get('/profile', function () {
+    
     if (Auth::guard('teacher')->check()) {
         return response()->json(new \App\Http\Resources\UserResource(Auth::guard('teacher')->user()));
     } elseif (Auth::guard('student')->check()) {

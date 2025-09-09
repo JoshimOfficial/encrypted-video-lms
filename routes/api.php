@@ -22,17 +22,7 @@ Route::prefix('v1')->group(function () {
         Route::get('google/callback', [AuthController::class, 'googleCallback']);
     });
 
-    
-    //_____ Public Profile Route _____//
-    Route::get('profile', function (Request $request) {
-        if (auth('teacher')->check()) {
-            return response()->json(new UserResource(auth('teacher')->user()));
-        } elseif (auth('student')->check()) {
-            return response()->json(new UserResource(auth('student')->user()));
-        } else {
-            return response()->json(['message' => 'Unauthenticated.'], 401);
-        }
-    });
+    // profile endpoint moved to web middleware to use session auth
 
     //_____ Health Check Endpoint _____//
     Route::get('health', function () {
