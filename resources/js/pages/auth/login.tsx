@@ -32,6 +32,41 @@ export default function Login({ status, canResetPassword }: LoginProps) {
         });
     };
 
+    const postGoogleAuth = async (
+        loginType: 'student' | 'teacher',
+        accessToken: string,
+        profile: { sub?: string; name?: string; email?: string; picture?: string; google_id?: string }
+    ) => {
+        const payload = {
+            token: accessToken,
+            profile: {
+                name: profile?.name ?? '',
+                email: profile?.email ?? '',
+                profile_photo: profile?.picture ?? '',
+                google_id: profile?.sub ?? '',
+                login_type: loginType,
+            },
+        };
+
+        console.groupCollapsed(`[google] sending to backend: ${loginType}`);
+        console.log('payload', payload);
+        console.groupEnd();
+
+        const response = await fetch(`/api/v1/auth/google`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            console.error('[google] backend error', { status: response.status, result });
+            return;
+        }
+        console.log('[google] backend success', result);
+    };
+
     const loginStudent = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
@@ -42,6 +77,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 });
                 const profile = await res.json();
                 console.log('student login success', { tokenResponse, profile });
+                await postGoogleAuth('student', tokenResponse.access_token, profile);
             } catch (error) {
                 console.error('student login userinfo error', error);
             }
@@ -61,6 +97,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 });
                 const profile = await res.json();
                 console.log('teacher login success', { tokenResponse, profile });
+                await postGoogleAuth('teacher', tokenResponse.access_token, profile);
             } catch (error) {
                 console.error('teacher login userinfo error', error);
             }

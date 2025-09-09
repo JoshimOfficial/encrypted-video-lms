@@ -21,7 +21,9 @@ class AuthController extends Controller
 
         $token = $this->createUserToken($user);
 
-        Auth::login($user);
+        // Login to the correct session guard so web requests are authenticated without Bearer tokens
+        $guard = $user instanceof Teacher ? 'teacher' : 'student';
+        Auth::guard($guard)->login($user);
 
         return $this->googleAuthSuccessResponse($user, $token);
     }
