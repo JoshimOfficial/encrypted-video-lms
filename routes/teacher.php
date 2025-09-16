@@ -16,6 +16,18 @@ Route::prefix('/teacher')->group(function(){
         return Inertia::render('teacher/course/index');
     })->name('teacher-course');
 
+    Route::get('course/create', function () {
+        return Inertia::render('teacher/course/create');
+    })->name('teacher-course-create');
+
+    Route::get('course/{id}/edit', function ($id) {
+        return Inertia::render('teacher/course/edit', ['id' => $id]);
+    })->name('teacher-course-edit');
+
+    Route::get('course/{id}', function ($id) {
+        return Inertia::render('teacher/course/show', ['id' => $id]);
+    })->name('teacher-course-show');
+
 
     Route::get('video', function () {
         return Inertia::render('teacher/video/index');
@@ -32,6 +44,9 @@ Route::prefix('/teacher')->group(function(){
     Route::get('video/{id}', function ($id) {
         return Inertia::render('teacher/video/show', ['id' => $id]);
     })->name('teacher-video-show');
+
+
+
     Route::get('role', function () {
         return Inertia::render('teacher/role/index');
     })->name('teacher-role-index');
